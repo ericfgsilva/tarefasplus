@@ -1,6 +1,7 @@
 import { GetServerSideProps } from "next";
 import styles from "./style.module.css";
 import Head from "next/head";
+import TextArea from '../../components/textarea';
 
 import { getSession } from 'next-auth/react';
 
@@ -11,7 +12,26 @@ export default function Dashboard(){
                 <title>Meu painel de tarefas</title>
             </Head>
 
-            <h1>Painel de tarefas</h1>
+            <main className={styles.main}>
+                <section className={styles.content}>
+                    <div className={styles.contentForm}>
+                        <h1 className={styles.title}>Qual sua tarefa?</h1>
+                        
+                        <form>
+                            <TextArea placeholder="Digite sua tarefa aqui..." />
+                            <div className={styles.checkboxArea}>
+                                <input 
+                                    id="isPublic"
+                                    type="checkbox" 
+                                    className={styles.checkbox} 
+                                />
+                                <label htmlFor="isPublic">Deixar tarefa pública?</label>
+                            </div>
+                            <button className={styles.button} type="submit">Registrar Tarefa</button>
+                        </form>
+                    </div>
+                </section>
+            </main>
 
         </div>
     );
